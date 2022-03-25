@@ -1,4 +1,5 @@
 FOMBA FAMPIASANA AZY
 
---Afaka tsy maintsy matrice carré vao mety hatreto 
--Lancena fotsiny ny fichier matrix_multiplication
+-Tsy maintsy matrice carré vao mety hatreto
+
+-Lancena fotsiny ny fichier matrice_multiplication
