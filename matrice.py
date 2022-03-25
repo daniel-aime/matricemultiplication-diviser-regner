@@ -51,12 +51,24 @@ def produit_mat(vect_A, vect_B, n):
 
   return (somme, i + 1)
 
-a = [2, 2]
-b = [1, 2]
+a = [
+  [1, 2],
+  [0, 1]
+]
+b = [
+  [0, 1],
+  [-1, 2]
+]
 
-print(produit_mat(a, b, len(a) - 1 ))
+# c = [1, 2] * [0, -1]
+
+# print(produit_mat(a, b, len(a) - 1 ))
 
 # a * b = 6
+
+def slice_matrix(a, b, start, finish):
+  
+
 def prod_mat_A_B(mat_A, mat_B, C=None):
   
   ligne = 0
@@ -66,7 +78,10 @@ def prod_mat_A_B(mat_A, mat_B, C=None):
   else:
     
     if ligne == 0:
-      C[1][1] = mat_A
+      n = len(mat_A) - 1
+      C[0][0] = produit_mat(mat_A[0], mat_B[0], n )[0]
+    else: 
+      C[ligne][colonne] = 
     
   
   return [ligne + 1, colonne + 1]
