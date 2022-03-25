@@ -16,7 +16,6 @@ b = [
   [0, 4, 4],
   [2, 3, 1]
 ]
-test = [1, 2, 3]
 
 def parcourir(a, n):
   i = n
@@ -36,9 +35,28 @@ def fusion():
   pass 
 
 
-def produit_mat(mat_A, mat_B, ligne, col):
-  pass
 
+def produit_mat(vect_A, vect_B, n):
+  somme = 0
+  i = n
+  
+  if i == 0:
+    somme += vect_A[0] * vect_B[0]
+  else:
+    tmp_somme  = 0
+    somme += vect_A[i] * vect_B[i]
+    tmp_somme , i = produit_mat(vect_A, vect_B, i-1)
+    somme += tmp_somme  
+  
+
+  return (somme, i + 1)
+
+a = [2, 2]
+b = [1, 2]
+
+print(produit_mat(a, b, len(a) - 1 ))
+
+# a * b = 6
 def prod_mat_A_B(mat_A, mat_B, C=None):
   
   ligne = 0
@@ -58,13 +76,13 @@ def prod_mat_A_B(mat_A, mat_B, C=None):
 
 
 
-parcourir(B, len(B) - 1)
-print(B)
+# parcourir(B, len(B) - 1)
+# print(B)
 # aa = 0
 # while aa < len(a):
 #   print(a[aa])
 #   aa += 1
-  
+
 
 
 
