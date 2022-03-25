@@ -5,17 +5,17 @@ import random
 A = [ [random.randint(0, 10) for j in range(8)] for i in range(8) ]
 B = [ [random.randint(0, 10) for j in range(8)] for i in range(8) ]
 
-a = [
-  [1, 2, 3],
-  [1, 4, 5],
-  [0, 2, 2]
-]
+# a = [
+#   [1, 2, 3],
+#   [1, 4, 5],
+#   [0, 2, 2]
+# ]
 
-b = [
-  [1, 3, 4],
-  [0, 4, 4],
-  [2, 3, 1]
-]
+# b = [
+#   [1, 3, 4],
+#   [0, 4, 4],
+#   [2, 3, 1]
+# ]
 
 def parcourir(a, n):
   i = n
@@ -51,47 +51,68 @@ def produit_mat(vect_A, vect_B, n):
 
   return (somme, i + 1)
 
-a = [
-  [1, 2],
-  [0, 1]
-]
-b = [
-  [0, 1],
-  [-1, 2]
-]
 
 # c = [1, 2] * [0, -1]
 
 # print(produit_mat(a, b, len(a) - 1 ))
 
 # a * b = 6
-
+a = [
+  [1, 2, 1],
+  [4, 1, 2],
+  [-7, 10, 2]
+]
+b = [
+  [0, 1, 3],
+  [-1, 2, 3],
+  [4, 10, 3]
+]
 def slice_matrix(a, b, start, finish):
-  
+  a_pk = []
+  b_kq = []
 
-def prod_mat_A_B(mat_A, mat_B, C=None):
+  for i in range(len(a)):
+    a_pk.append(a[start][i])
+    b_kq.append(b[i][finish])
+  
+  # print(f"La valeur du vec a_pk = {a_pk}")
+  # print(f"La valeur du vect a_kq = {b_kq}")
+
+  return (a_pk, b_kq)
+
+
+def prod_mat_A_B(mat_A, mat_B, C=None, n_iteration=None):
   
   ligne = 0
   colonne = 0
+  n = len(mat_A) - 1
+
   if C == None:
     C = [ [0 for j in range(len(mat_A))] for i in range(len(mat_A))]
-  else:
+    n_iteration = len(C) - 1
+
+
+  if n_iteration == 0:
+    a_pk, b_kp = slice_matrix(mat_A, mat_B, 0, 0)
+    C[0][0] = produit_mat(a_pk, b_kp, n )[0]
+
+  else: 
+    a_pk, b_kp = slice_matrix(mat_A, mat_B, ligne, colonne)
+    print(n_iteration)
+    C[ligne][colonne] = produit_mat(a_pk, b_kp, n )[0]
+    ligne, colonne, C, n_iteration = prod_mat_A_B(mat_A, mat_B, C, n_iteration - 1)
+    print(ligne, colonne)
+
+
     
-    if ligne == 0:
-      n = len(mat_A) - 1
-      C[0][0] = produit_mat(mat_A[0], mat_B[0], n )[0]
-    else: 
-      C[ligne][colonne] = 
-    
   
-  return [ligne + 1, colonne + 1]
+  return [ligne + 1, colonne + 1, C, n_iteration + 1]
   
-  
+print(prod_mat_A_B(A, B) )
 
 
 
 
-# parcourir(B, len(B) - 1)
 # print(B)
 # aa = 0
 # while aa < len(a):
