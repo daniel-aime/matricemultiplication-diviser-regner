@@ -36,14 +36,22 @@ def fusion():
   pass 
 
 
+def produit_mat(mat_A, mat_B, ligne, col):
+  pass
+
 def prod_mat_A_B(mat_A, mat_B, C=None):
   
-
+  ligne = 0
+  colonne = 0
   if C == None:
     C = [ [0 for j in range(len(mat_A))] for i in range(len(mat_A))]
   else:
-    pass
+    
+    if ligne == 0:
+      C[1][1] = mat_A
+    
   
+  return [ligne + 1, colonne + 1]
   
   
 
